@@ -13,12 +13,12 @@
             // DS.ArrayList.Begin();
 
             // Algorithms   
-            // Algorithms.Search.Begin();        
+            // Algorithms.Search.Begin();
             // Algorithms.Sort.Begin();
 
             // Recursion
-            // Algorithms.Recursion.Begin();
-            Algorithms.PathFind.Begin();
+            Algorithms.Recursion.Begin();
+            // Algorithms.PathFind.Begin();
         }
     }
 }

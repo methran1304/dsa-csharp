@@ -5,67 +5,65 @@ namespace Algorithms;
 
 public static class PathFind
 {
-    public static char[][] Map =
+    private static readonly List<List<char>> Map =
     [
         ['S', ' ', '#', '#'],
         [' ', '#', '#', '#'],
         [' ', ' ', '#', 'E'],
-        ['#', ' ', ' ', ' ']
+        ['#', ' ', '#', ' '],
+        ['#', ' ', '#', ' '],
+        ['#', ' ', ' ', ' '],
+        [' ', ' ', ' ', ' ']
     ];
 
-    public static bool[][] Visited =
-    [
-        [..Enumerable.Repeat(false, 4)],
-        [..Enumerable.Repeat(false, 4)],
-        [..Enumerable.Repeat(false, 4)],
-        [..Enumerable.Repeat(false, 4)],
-    ];
+    private static readonly List<List<bool>> Visited = Enumerable
+        .Range(0, 7)
+        .Select(_ => Enumerable.Repeat(false, 4).ToList())
+        .ToList();
+        
+    public static readonly List<((int, int), string)> Path = [];
 
-    public static (int, int)[] Path = [];
-
-    private static bool SolveRecurse(char[][] m, int r, int c, int nR, int nC)
+    private static bool SolveRecurse(List<List<char>> m, int r, int c, string dir = "")
     {
         // check boundaries
-        if (r < 0 || c < 0 || r > nR - 1 || c > nC - 1)
-            return false;
+        if (r < 0 || c < 0 || r > m.Count - 1 || c > m[0].Count - 1) return false;
 
-
-        if (m[r][c] == '#')                         // check if wall
-            return false;
+        // check if wall
+        if (m[r][c] == '#') return false;
         
-        if (m[r][c] == 'E')                         // check if end
+        // check if end
+        if (m[r][c] == 'E')
         {
-            Path = Path.Prepend((r, c)).ToArray();
+            Path.Add(((r, c), dir));
             return true;
         }
 
         // check if visited
-        if (Visited[r][c])
-            return false;
-
+        if (Visited[r][c]) return false;
         Visited[r][c] = true;
 
         bool found =
-            SolveRecurse(m, r, c - 1, nR, nC) ||    // left 
-            SolveRecurse(m, r, c + 1, nR, nC) ||    // right
-            SolveRecurse(m, r - 1, c, nR, nC) ||    // up
-            SolveRecurse(m, r + 1, c, nR, nC);      // down
+            SolveRecurse(m, r, c - 1, "left")  ||   // left 
+            SolveRecurse(m, r, c + 1, "right") ||   // right
+            SolveRecurse(m, r - 1, c, "up")    ||   // up
+            SolveRecurse(m, r + 1, c, "down");      // down
 
         if (found)
-            Path = Path.Prepend((r, c)).ToArray();  // add followed path if end is found
+            Path.Add(((r, c), dir)); // add traversed path if end is found
 
         return found;
     }
 
     public static void Begin()
     {
-        bool found = SolveRecurse(Map, 0, 0, 4, 4);
+        bool found = SolveRecurse(Map, 0, 0, "START");
 
         if (found)
         {
-            foreach ((int r, int c) in Path)
+            Path.Reverse();
+            foreach (((int r, int c), string dir) in Path)
             {
-                Console.WriteLine($"{r}, {c}");
+                Console.WriteLine($"{r}, {c} - {dir}");
             }
         }
     }
