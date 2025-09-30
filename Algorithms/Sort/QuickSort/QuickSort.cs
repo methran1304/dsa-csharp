@@ -1,5 +1,7 @@
 ﻿namespace Algorithms;
 
+using Utils;
+
 public static class QuickSort
 {
     private static void QSort(List<int> arr, int low, int high)
@@ -38,21 +40,11 @@ public static class QuickSort
         arr[j] = temp;
     }
 
-    private static void PrintArray(List<int> arr)
-    {
-        foreach (int elem in arr)
-        {
-            Console.Write($"{elem} ");
-        }
-
-        Console.Write('\n');
-    }
-
     public static void Begin()
     {
         List<int> arr = [2, 1, 3, 5, 4];
-        PrintArray(arr);
+        Utils.PrintArray(arr);
         QSort(arr, 0, arr.Count - 1);
-        PrintArray(arr);
+        Utils.PrintArray(arr);
     }
 }
