@@ -14,10 +14,11 @@
 
             // Algorithms   
             // Algorithms.Search.Begin();
-            // Algorithms.Sort.Begin();
+            // Algorithms.ElementarySort.Begin();
+            Algorithms.QuickSort.Begin();
 
             // Recursion
-            Algorithms.Recursion.Begin();
+            // Algorithms.Recursion.Begin();
             // Algorithms.PathFind.Begin();
         }
     }

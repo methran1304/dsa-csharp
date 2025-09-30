@@ -1,6 +1,6 @@
 ﻿namespace Algorithms
 {
-    public static class Sort
+    public static class ElementarySort
     {
         private static void BubbleSort(List<int> arr)
         {
@@ -52,11 +52,6 @@
 
                 i++;
             }
-        }
-
-        private static void QuickSort()
-        {
-            
         }
 
         private static int GetMinIndex(List<int> arr, int s, int e)
