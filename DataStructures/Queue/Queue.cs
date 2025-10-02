@@ -11,7 +11,12 @@ public class QueueImplementation<T>
         List = new();
     }
 
-    public bool Enqueue(T value)
+    public QueueImplementation(T? Value) : this()
+    {
+        Enqueue(Value);
+    }
+
+    public bool Enqueue(T? value)
     {
         List.InsertAtTail(value);
         return true;
@@ -32,6 +37,11 @@ public class QueueImplementation<T>
     public T? GetBack()
     {
         return List.GetTail();
+    }
+
+    public bool IsEmpty()
+    {
+        return List.Count == 0;
     }
 
     public void Traverse()

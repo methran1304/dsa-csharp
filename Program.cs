@@ -11,11 +11,12 @@
             // DS.Queue.Begin();
             // DS.Stack.Begin();
             // DS.ArrayList.Begin();
+            DS.Tree.Begin();
 
             // Algorithms   
             // Algorithms.Search.Begin();
             // Algorithms.ElementarySort.Begin();
-            Algorithms.QuickSort.Begin();
+            // Algorithms.QuickSort.Begin();
 
             // Recursion
             // Algorithms.Recursion.Begin();

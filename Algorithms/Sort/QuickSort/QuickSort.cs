@@ -5,7 +5,7 @@ using Utils;
 public static class QuickSort
 {
     private static void QSort(List<int> arr, int low, int high)
-    {
+    { 
         if (low < high)
         {
             int pivotIndex = Partition(arr, low, high);
@@ -35,9 +35,7 @@ public static class QuickSort
 
     private static void Swap(List<int> arr, int i, int j)
     {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+        (arr[i], arr[j]) = (arr[j], arr[i]);
     }
 
     public static void Begin()
