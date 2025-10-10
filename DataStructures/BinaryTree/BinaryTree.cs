@@ -26,6 +26,19 @@ public class BinaryTreeImplementation
         Root = null;
     }
 
+    public bool Find(int value)
+    {
+        return RecursiveFind(Root, value);
+    }
+    
+    private bool RecursiveFind(BinaryNode? root, int value)
+    {
+        if (root == null) return false;
+        if (root.Value == value) return true;
+        if (root.Value > value) return RecursiveFind(root.Left, value);
+        else return RecursiveFind(root.Right, value);
+    }
+
     public bool Insert(int value)
     {
         Root = RecursiveInsert(Root, value);
