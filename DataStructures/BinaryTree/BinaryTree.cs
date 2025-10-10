@@ -30,7 +30,7 @@ public class BinaryTreeImplementation
     {
         return RecursiveFind(Root, value);
     }
-    
+
     private bool RecursiveFind(BinaryNode? root, int value)
     {
         if (root == null) return false;
@@ -66,6 +66,67 @@ public class BinaryTreeImplementation
         }
 
         return root;
+    }
+
+    public bool Delete(int value)
+    {
+        if (!Find(value)) return false;
+        Root = RecursiveDelete(Root, value);
+        return true;
+    }
+
+    private BinaryNode? RecursiveDelete(BinaryNode? root, int value)
+    {
+        if (root == null) return null; // not found
+        else if (root.Value > value)
+        {
+            root.Left = RecursiveDelete(root.Left, value);
+            return root;
+        }
+        else if (root.Value < value)
+        {
+            root.Right = RecursiveDelete(root.Right, value);
+            return root;
+        }
+        else
+        {
+            // equal case
+            if (root.Left == null && root.Right == null) // no children
+            {
+                root = null;
+                return root;
+            }
+            else if (root.Left != null && root.Right == null) // onyl left
+            {
+                BinaryNode leftChild = root.Left;
+                root = null;
+                return leftChild;
+            }
+            else if (root.Left == null && root.Right != null) // only right
+            {
+                BinaryNode rightchild = root.Right;
+                root = null;
+                return rightchild;
+            }
+            else
+            {
+                // find largest on left subtree
+                BinaryNode? tempNode = root.Left;
+                int leftSubTreeLargest = tempNode!.Value;
+
+                while (tempNode != null)
+                {
+                    leftSubTreeLargest = tempNode.Value;
+                    tempNode = tempNode.Right;
+                }
+
+                // delete largest element on left subtree
+                root.Left = RecursiveDelete(root.Left, leftSubTreeLargest);
+
+                root.Value = leftSubTreeLargest;
+                return root;
+            }
+        }
     }
 
 
@@ -137,7 +198,6 @@ public class BinaryTreeImplementation
         RecursivePostOrderDFS(root.Right);
         Console.WriteLine(root.Value);
     }
-
 }
 
 public static class BinaryTree
@@ -153,6 +213,10 @@ public static class BinaryTree
         bt.Insert(-1);
         bt.Insert(8);
 
-        bt.PreOrderDFS();
+        bt.DFS();
+        Console.WriteLine("===");
+        bt.Delete(-2);
+
+        bt.DFS();
     }
 }
