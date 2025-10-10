@@ -11,7 +11,8 @@
             // DS.Queue.Begin();
             // DS.Stack.Begin();
             // DS.ArrayList.Begin();
-            DS.Tree.Begin();
+            // DS.Tree.Begin();
+            DS.BinaryTree.Begin();
 
             // Algorithms   
             // Algorithms.Search.Begin();
