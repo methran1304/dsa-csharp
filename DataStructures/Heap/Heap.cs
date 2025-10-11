@@ -18,6 +18,19 @@ public class HeapImplementation
         return TrickleUp(LastIndex);
     }
 
+    public bool Delete()
+    {
+        // no element to delete
+        if (_data.Count == 0) return false;
+
+        _data[0] = _data[LastIndex];
+        _data.RemoveAt(LastIndex);
+
+        // trickle down from root element
+        return TrickleDown(0);
+    }
+
+
     private bool TrickleUp(int currentIndex)
     {
         if (currentIndex == 0) return true;
@@ -81,18 +94,6 @@ public class HeapImplementation
         return true;
     }
 
-    public bool Delete()
-    {
-        // no element to delete
-        if (_data.Count == 0) return false;
-
-        _data[0] = _data[LastIndex];
-        _data.RemoveAt(LastIndex);
-
-        // trickle down from root element
-        return TrickleDown(0);
-    }
-
     public int? Root => _data.Count > 0 ? _data[0] : null;
     private int LastIndex => _data.Count - 1;
     private int LeftChildIndex(int currentIndex) => (2 * currentIndex) + 1;
@@ -110,8 +111,16 @@ public static class Heap
         heap.Insert(150);
         heap.Insert(350);
         heap.Insert(550);
+
         Console.WriteLine(heap.Root);
         heap.Delete();
+        heap.Delete();
+        heap.Delete();
+        heap.Delete();
+        heap.Delete();
+
+
+
         Console.WriteLine(heap.Root);
     }
 }

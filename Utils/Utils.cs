@@ -11,4 +11,9 @@ public static class Utils
 
         Console.Write('\n');
     }
+
+    public static void Swap(int l, int r)
+    {
+        (l, r) = (r, l);
+    }
 }
