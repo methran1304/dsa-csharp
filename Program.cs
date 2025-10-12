@@ -13,7 +13,8 @@
             // DS.ArrayList.Begin();
             // DS.Tree.Begin();
             // DS.BinaryTree.Begin();
-            DS.Heap.Begin();
+            // DS.Heap.Begin();
+            DS.Trie.Begin();
 
             // Algorithms   
             // Algorithms.Search.Begin();
