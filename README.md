@@ -1,7 +1,7 @@
 # Data Structures and Algorithms in C#
 
 A collection of **data structures** and **algorithms** implemented in C# for learning and practice.  
-This project covers core concepts like arrays, linked lists, stacks, queues, trees, heaps, sorting, searching, recursion, and pathfinding — all organized in a clean .NET project structure.
+This project covers core concepts like arrays, linked lists, stacks, queues, trees, heaps, sorting, searching, recursion and pathfinding.
 
 ---
 
