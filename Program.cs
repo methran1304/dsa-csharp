@@ -14,12 +14,13 @@
             // DS.Tree.Begin();
             // DS.BinaryTree.Begin();
             // DS.Heap.Begin();
-            DS.Trie.Begin();
+            // DS.Trie.Begin();
 
             // Algorithms   
             // Algorithms.Search.Begin();
             // Algorithms.ElementarySort.Begin();
             // Algorithms.QuickSort.Begin();
+            Algorithm.DynamicProgramming.Begin();
 
             // Recursion
             // Algorithms.Recursion.Begin();
